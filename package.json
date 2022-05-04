@@ -1,6 +1,6 @@
 {
     "name": "simple-base32",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Base32 Encoder/Decoder for Node.js and Browser",
     "main": "out/main/index.js",
     "types": "out/main/index.d.ts",
