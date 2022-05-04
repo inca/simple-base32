@@ -10,17 +10,17 @@ export function encodeBase32(str: string, options: Partial<Base32Options> = {}) 
     let bits = 0;
     let output = '';
 
-    for (let i = 0; i < bytes.length; ) {
+    for (let i = 0; i < bytes.length;) {
         const byte = bytes[i];
         if (skip < 0) {
-            bits |= (byte >> (-skip))
+            bits |= (byte >> (-skip));
         } else {
             bits = (byte << skip) & 248;
         }
 
         if (skip > 3) {
             skip -= 8;
-            i+= 1;
+            i += 1;
             continue;
         }
         if (skip < 4) {
@@ -39,7 +39,7 @@ export function decodeBase32(str: string, options: Partial<Base32Options> = {}) 
     const { alphabet } = opts;
     let skip = 0;
     let byte = 0;
-    let bytes = [];
+    const bytes = [];
 
     for (let i = 0; i < str.length; i++) {
         const char = str[i].toLowerCase();
@@ -63,6 +63,3 @@ export function decodeBase32(str: string, options: Partial<Base32Options> = {}) 
     const arr = new Uint8Array(bytes);
     return new TextDecoder().decode(arr);
 }
-
-console.log(encodeBase32('Hello world 👾'));
-console.log(decodeBase32('jbs025dpeb5086tmmqqpbh6r12'));
